@@ -6,7 +6,7 @@
   <title>Ivry Échecs 94 — Tarifs</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=2">
 
   <meta name="description" content="Tarifs des licences et cotisations du club Ivry Échecs 94 (jeunes/adultes, loisirs/compétitions).">
   <link rel="canonical" href="https://nelwyn64.github.io/site-Ivry-Echecs/tarifs.html">
@@ -26,8 +26,16 @@
 
   <header class="site-header">
     <div class="container topbar">
-      <a class="brand" href="./"><img src="assets/logo.svg" alt="" aria-hidden="true"><span>Ivry Échecs 94</span></a>
-      <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="./">
+        <img src="assets/logo.svg" alt="" aria-hidden="true">
+        <span>Ivry Échecs 94</span>
+      </a>
+
+      <button class="burger" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="about.html">Le club</a>
         <a href="agenda.html">Agenda</a>
