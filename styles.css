@@ -1,0 +1,17 @@
+:root{
+  --bg:#ffffff;
+  --fg:#111;
+  --muted:#666;
+  --accent:#2563eb;
+  --card:#f6f7fb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+.container{max-width:900px;margin:auto;padding:24px}
+header{background:var(--card);border-bottom:1px solid #e5e7eb}
+h1{margin:0 0 8px 0;font-size:clamp(28px,4vw,40px)}
+h2{margin:24px 0 8px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+footer{border-top:1px solid #e5e7eb;color:var(--muted)}
+code{background:#eef2ff;padding:2px 6px;border-radius:6px}
