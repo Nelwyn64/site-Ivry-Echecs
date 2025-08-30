@@ -13,14 +13,12 @@
   {%- endif -%}
   <meta name="theme-color" content="#fd353c">
 
-  <!-- Open Graph / Twitter (minimales) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Ivry Échecs 94">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ page.meta_description | default: site.description }}">
   <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/logo.svg">
-  <meta name="twitter:card" content="summary_large_image">
 
   {{ page.head_extra }}
 </head>
