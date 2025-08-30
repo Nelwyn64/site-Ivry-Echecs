@@ -1,29 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
-
-  <link rel="icon" href="{{ site.baseurl }}/assets/favicon.svg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.meta_description }}">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/styles.css?v={{ site.time | date: '%s' }}">
-
-  {%- if page.meta_description -%}
-    <meta name="description" content="{{ page.meta_description }}">
-  {%- endif -%}
-  <meta name="theme-color" content="#fd353c">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Ivry Échecs 94">
-  <meta property="og:title" content="{{ page.title | default: site.title }}">
-  <meta property="og:description" content="{{ page.meta_description | default: site.description }}">
-  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/logo.svg">
-
-  {{ page.head_extra }}
+  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
+
   {% include header.html %}
 
   <main id="contenu">
@@ -35,3 +22,4 @@
   <script src="{{ site.baseurl }}/js/main.js" defer></script>
 </body>
 </html>
+
