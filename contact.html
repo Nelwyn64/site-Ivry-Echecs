@@ -1,85 +1,24 @@
+---
+layout: default
+title: Ivry Échecs 94 — Contact
+meta_description: "Formulaire de contact et informations pratiques."
+---
 
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ivry Échecs 94 — Contact</title>
+<section class="container">
+  <h1 class="section-title">Nous contacter</h1>
+  <form class="form-grid" action="#" method="post" aria-describedby="form-hint">
+    <div><label for="name">Nom</label><input class="input" id="name" name="name" required></div>
+    <div><label for="email">Email</label><input class="input" id="email" name="email" type="email" required></div>
+    <div class="full"><label for="msg">Message</label><textarea class="input" id="msg" name="message" rows="6" required></textarea></div>
+    <div class="full"><button class="btn" type="submit" aria-describedby="form-hint">Envoyer</button></div>
+    <p id="form-hint" class="small">Formulaire non connecté (démo).</p>
+  </form>
+</section>
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/styles.css?v=2">
-
-  <meta name="description" content="Contacter le club Ivry Échecs 94 : formulaire et informations pratiques.">
-  <link rel="canonical" href="https://nelwyn64.github.io/site-Ivry-Echecs/contact.html">
-  <meta name="theme-color" content="#fd353c">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Ivry Échecs 94">
-  <meta property="og:title" content="Ivry Échecs 94 — Contact">
-  <meta property="og:description" content="Écrivez-nous ou retrouvez nos infos pratiques pour venir jouer à Ivry-sur-Seine.">
-  <meta property="og:url" content="https://nelwyn64.github.io/site-Ivry-Echecs/contact.html">
-  <meta property="og:image" content="https://nelwyn64.github.io/site-Ivry-Echecs/assets/logo.svg">
-
-  <meta name="twitter:card" content="summary_large_image">
-</head>
-<body>
-  <a class="skip" href="#contenu">Aller au contenu</a>
-
-  <header class="site-header">
-    <div class="container topbar">
-      <a class="brand" href="./">
-  <img src="assets/logo-ivry-echecs.png" alt="Logo Ivry Échecs 94">
-  <span>Ivry Échecs 94</span>
-</a>
-
-
-      <button class="burger" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
-        <span aria-hidden="true"></span>
-      </button>
-
-      <nav id="site-nav" class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">Le club</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="tarifs.html">Tarifs</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="contenu" class="container">
-    <section>
-      <h1 class="section-title">Nous contacter</h1>
-      <form class="form-grid" action="#" method="post" aria-describedby="form-hint">
-        <div>
-          <label for="name">Nom</label>
-          <input class="input" id="name" name="name" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input class="input" id="email" name="email" type="email" required>
-        </div>
-        <div class="full">
-          <label for="msg">Message</label>
-          <textarea class="input" id="msg" name="message" rows="6" required></textarea>
-        </div>
-        <div class="full">
-          <button class="btn" type="submit" aria-describedby="form-hint">Envoyer</button>
-        </div>
-        <p id="form-hint" class="small">Formulaire non connecté (démo). Utilisez Formspree, Netlify Forms, etc.</p>
-      </form>
-    </section>
-
-    <section>
-      <h2 class="section-title">Infos pratiques</h2>
-      <div class="card">
-        <p><strong>Lieu & horaires :</strong> en cours de définition.</p>
-        <p><strong>Email :</strong> contact@ivry-echecs.fr (exemple)</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer"><div class="container small">© 2025 Ivry Échecs 94</div></footer>
-  <script src="js/main.js" defer></script>
-</body>
-</html>
+<section class="container">
+  <h2 class="section-title">Infos pratiques</h2>
+  <div class="card">
+    <p><strong>Lieu & horaires :</strong> en cours de définition.</p>
+    <p><strong>Email :</strong> contact@ivry-echecs.fr (exemple)</p>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+
+  <link rel="icon" href="{{ site.baseurl }}/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/styles.css?v=2">
+
+  {%- if page.meta_description -%}
+    <meta name="description" content="{{ page.meta_description }}">
+  {%- endif -%}
+  <meta name="theme-color" content="#fd353c">
+
+  <!-- Open Graph / Twitter (minimales) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ivry Échecs 94">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.meta_description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  {{ page.head_extra }}
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  {% include header.html %}
+
+  <main id="contenu">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <script src="{{ site.baseurl }}/js/main.js" defer></script>
+</body>
+</html>
