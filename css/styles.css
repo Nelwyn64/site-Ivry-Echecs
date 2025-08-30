@@ -169,3 +169,22 @@ label{display:block;margin:12px 0 6px}
   transform: scale(1.05);
 }
 
+/* === Arrière-plan plein écran par page === */
+.has-bg::before {
+  content: "";
+  position: fixed;   /* reste en place lors du scroll */
+  inset: 0;          /* occupe tout l'écran */
+  z-index: -1;       /* derrière tout le contenu */
+  background-image: var(--page-bg);
+  background-size: cover;       /* couvre 100% sans déformer */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* effet parallax léger (désactivé sur iOS) */
+  filter: brightness(0.55);     /* assombrit pour lisibilité du texte */
+}
+
+/* Petits renforts de lecture au-dessus du fond */
+.site-header, .site-footer, main {
+  background: rgba(0,0,0,0.08); /* voile discret, optionnel */
+  backdrop-filter: saturate(1.05);
+}
