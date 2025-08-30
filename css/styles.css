@@ -1,255 +1,76 @@
-/* =========================================================
-   Ivry Échecs 94 — styles.css (version unifiée)
-   - Variables & reset
-   - Layout de page & containers
-   - Header sticky + menu "pill" (jaune pâle)
-   - Bouton burger (mobile)
-   - Skip-link (accessibilité)
-   - Héros + fond plein écran (avec overlay)
-   - Grilles / cartes / galerie
-   - Boutons / liens / footer
-   ========================================================= */
-
-/* ---------- Variables : couleurs & tokens ---------- */
-:root{
-  /* Couleurs club */
-  --anthracite: #30333b;    /* gris anthracite demandé */
-  --rouge:      #fd353c;    /* rouge vif club */
-  --gris-clair: #cccccc;    /* gris clair demandé */
-
-  /* Thème */
-  --bg:    #14161a;         /* fond racine */
-  --ink:   #f5f6f7;         /* texte principal */
-  --muted: #9aa2ad;         /* texte secondaire */
-
-  /* Accent / actions */
-  --primary: #fee08a;       /* JAUNE PÂLE pour titres/menus actifs */
-  --accent:  var(--rouge);
-
-  /* Pills (boutons du menu) */
-  --pill-bg:     rgba(48,51,59,.30);
-  --pill-border: rgba(48,51,59,.55);
-  --pill-shadow: 0 8px 26px rgba(0,0,0,.22);
-
-  /* Cartes/sections */
-  --card-bg:     rgba(48,51,59,.30);   /* légèrement + clair que header */
-  --card-border: rgba(48,51,59,.55);
-  --card-shadow: 0 10px 28px rgba(0,0,0,.18);
-
-  /* Overlay au-dessus des images de fond (texte lisible) */
-  --overlay: rgba(20,22,26,.45);
-
-  /* Mesures */
-  --space: 20px;
-  --maxw: 1100px;
+/* === Logo (×2 sur desktop) ================================== */
+.brand img{
+  width:112px;           /* x2 par rapport à ~56px */
+  height:auto;
+}
+@media (max-width: 640px){
+  .brand img{ width:72px; }
 }
 
-/* ---------- Reset minimal ---------- */
-*{ box-sizing: border-box; }
-html,body{ height:100%; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-}
-
-/* Focus visible accessible */
-:focus-visible{
-  outline:2px solid var(--primary);
-  outline-offset:2px;
-  border-radius:8px;
-}
-
-/* ---------- Helpers ---------- */
-.container{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 var(--space);
-}
-
-.small{ max-width: 860px; }
-
-/* Typo de base */
-h1,h2,h3{ color: var(--primary); line-height:1.2; margin: 12px 0; }
-h1{ font-size: clamp(28px, 4vw, 42px); }
-h2{ font-size: clamp(22px, 2.6vw, 28px); }
-h3{ font-size: clamp(18px, 2vw, 22px); }
-
-p{ margin: 0 0 12px; color: var(--ink); }
-a{ color: var(--accent); text-decoration: none; }
-a:hover{ text-decoration: underline; }
-
-/* =========================================================
-   HEADER STICKY + NAV
-   ========================================================= */
-
-/* Skip link : masqué sauf focus */
-.skip{
-  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
-}
-.skip:focus{
-  position:fixed; left:16px; top:16px; width:auto; height:auto;
-  padding:10px 14px; z-index:1000;
-  background:#14161a; color:var(--ink);
-  border:1px solid rgba(255,255,255,.3); border-radius:10px;
-}
-
-/* Barre sticky, plus opaque que les cartes */
-.site-header{
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(20,22,26,0.92);
-  backdrop-filter: blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.topbar{
-  display:flex; align-items:center; justify-content:space-between;
-  height:72px; gap:16px;
-}
-
-/* Logo */
-.brand{ display:inline-flex; align-items:center; gap:12px; }
-.brand img{ width:44px; height:auto; display:block; }
-@media (min-width:1024px){ .brand img{ width:48px; } }
-
-/* Nav : boutons "pill" homogènes, texte jaune pâle */
-.nav{ display:flex; align-items:center; gap:14px; }
+/* === Boutons du menu : même taille ========================== */
 .nav a{
-  display:inline-flex; align-items:center; justify-content:center;
-  height:40px;                      /* même hauteur */
-  min-width: 96px;                  /* largeur mini homogène */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:110px;        /* largeur mini commune */
+  height:44px;            /* hauteur commune */
   padding:0 16px;
   border-radius:999px;
-  background: var(--pill-bg);       /* gris transparent */
-  border: 1px solid var(--pill-border);
-  color: var(--primary);            /* JAUNE PÂLE pour le menu */
-  box-shadow: var(--pill-shadow);
-  text-align:center; white-space:nowrap;
-  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
-}
-.nav a:hover{
-  transform: translateY(-1px);
-  background: rgba(48,51,59,.45);
-}
-.nav a[aria-current="page"]{
-  outline:2px solid rgba(255,224,138,.55);
-  outline-offset:2px;
 }
 
-/* Burger (mobile) */
-.burger{
-  display:none; margin-left:auto;
-  width:40px; height:40px; border:0; background:transparent; border-radius:10px;
-  align-items:center; justify-content:center;
-}
-.burger span, .burger span::before, .burger span::after{
-  content:""; display:block; width:22px; height:2px; background:var(--ink); position:relative;
-}
-.burger span::before{ position:absolute; left:0; top:-7px; }
-.burger span::after { position:absolute; left:0; top:7px; }
-
-@media (max-width: 719px){
-  .burger{ display:inline-flex; }
-  .nav{ display:none; width:100%; }
-  .nav.open{
-    display:flex; flex-direction:column; align-items:flex-start;
-    gap:10px; padding:10px 0;
-  }
-}
-
-/* =========================================================
-   HÉROS + FOND PLEIN ÉCRAN
-   (le HTML crée <div class="page-bg"> en arrière-plan)
-   ========================================================= */
-
-.page-bg{
-  position: fixed;
-  inset: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -2;
-}
-.page-bg::after{
-  content:""; position:absolute; inset:0;
-  background: var(--overlay);       /* voile pour contraste */
-}
-
-/* Section héros sur la home */
-.hero{
-  padding: clamp(28px, 6vw, 64px) 0 clamp(8px, 2vw, 16px);
-}
-.hero .btn{ margin-top:16px; }
-
-/* =========================================================
-   CARTES / GRILLES / GALERIE
-   ========================================================= */
-
-.grid{ display:grid; gap:16px; }
-.grid.cols-2{ grid-template-columns: 1fr; }
-@media (min-width: 860px){
-  .grid.cols-2{ grid-template-columns: 1fr 1fr; }
-}
-
-/* Cartes (index) : un peu plus translucides que le header */
-.card{
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+/* === Tableau “verre” (tarifs) =============================== */
+.glass {
+  background:rgba(0,0,0,.30);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
   border-radius:16px;
-  padding:20px 24px;
-  box-shadow: var(--card-shadow);
-  color: var(--ink);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.glass-table{
+  width:100%;
+  border-collapse:collapse;
+  color:var(--ink);
+}
+.glass-table th,
+.glass-table td{
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.glass-table thead th{
+  font-weight:700;
+}
+.glass-table tr:last-child td{
+  border-bottom:none;
 }
 
-/* Galerie responsive (about) */
-.gallery{
-  display:grid; gap:16px; margin-top:16px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* === Formulaire vertical (Contact) ========================== */
+.form{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  max-width:720px;
 }
-.gallery img{
-  width:100%; height:auto; display:block; border-radius:12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.15);
-  transition: transform .25s ease, filter .25s ease;
+.form label{
+  font-weight:600;
 }
-.gallery img:hover{
-  transform: scale(1.03);
-  filter: brightness(1.04) contrast(1.02);
+.form input[type="text"],
+.form input[type="email"],
+.form textarea{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.25);
+  color:var(--ink);
 }
-
-/* =========================================================
-   BOUTONS / LIENS
-   ========================================================= */
-
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  padding: 12px 18px; border-radius:999px; border:1px solid transparent;
-  background: var(--accent); color:#fff; font-weight:600;
-  box-shadow: 0 8px 26px rgba(253,53,60,.35);
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+.form textarea{ min-height:160px; resize:vertical; }
+.form button{
+  align-self:start;
+  padding:12px 18px;
+  border-radius:999px;
+  border:1px solid var(--accent);
+  background:rgba(0,0,0,.35);
+  color:var(--primary);
+  cursor:pointer;
 }
-.btn:hover{ transform: translateY(-1px); opacity:.95; }
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-.site-footer{
-  margin-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding: 16px 0;
-  background: rgba(20,22,26,.75);
-}
-.site-footer a{ color: var(--accent); }
-
-/* =========================================================
-   UTILITAIRES
-   ========================================================= */
-
-.section-title{ margin: 10px 0 12px; }
-
-/* Force la largeur des éléments du menu pour uniformiser l’aspect
-   même quand les mots sont courts/longs */
-.nav a{ min-width: 96px; }
-
-/* Petites améliorations de lisibilité sur fond photo */
-.shadow-soft{ text-shadow: 0 2px 16px rgba(0,0,0,.5); }
