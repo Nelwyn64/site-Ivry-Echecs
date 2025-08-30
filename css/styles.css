@@ -188,3 +188,23 @@ label{display:block;margin:12px 0 6px}
   background: rgba(0,0,0,0.08); /* voile discret, optionnel */
   backdrop-filter: saturate(1.05);
 }
+/* === Fond plein écran, version sûre === */
+.has-bg { position: relative; }
+
+/* Fond plein écran par page */
+.has-bg { position: relative; }
+.has-bg::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: 0;  /* le fond */
+  background-image: var(--page-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  filter: brightness(0.55);
+}
+/* Le contenu passe devant */
+.site-header, main, .site-footer { position: relative; z-index: 1; }
+

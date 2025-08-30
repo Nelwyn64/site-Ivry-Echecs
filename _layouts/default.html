@@ -9,9 +9,14 @@
   <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
 </head>
 <body class="{% if page.bg_image %}has-bg{% endif %}"
-      {% if page.bg_image %}
-      style="--page-bg: url('{{ site.baseurl }}/assets/{{ page.bg_image }}');"
-      {% endif %}>
+      style="{% if page.bg_image %}--page-bg:url('{{ site.baseurl }}/assets/{{ page.bg_image }}'){% endif %}">
+
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  {% include header.html %}
+
+  <main id="contenu">
+    {{ content }}
   </main>
 
   {% include footer.html %}
