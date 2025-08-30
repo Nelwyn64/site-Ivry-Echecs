@@ -142,7 +142,7 @@ label{display:block;margin:12px 0 6px}
 /* Version desktop large : logo plus grand */
 @media (min-width: 1024px) {
   .brand img {
-    width: 80px;
+    width: 70px;
   }
   .brand span {
     font-size: 1.6rem;
