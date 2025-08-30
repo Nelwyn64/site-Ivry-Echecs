@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.meta_description }}">
   <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
@@ -14,9 +14,9 @@
   <div class="page-bg" style="background-image:url('{{ site.baseurl }}/assets/{{ page.bg_image }}')"></div>
   {% endif %}
 
-  <a class="skip" href="#contenu">Aller au contenu</a>
-
   {% include header.html %}
+
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
   <main id="contenu">
     {{ content }}

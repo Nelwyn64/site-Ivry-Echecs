@@ -1,26 +1,21 @@
 <header class="site-header">
   <div class="container topbar">
-    <a class="brand" href="{{ site.baseurl }}/">
-      <img src="{{ site.baseurl }}/assets/logo-ivry-echecs.png" alt="Logo Ivry Échecs 94">
-      <span>Ivry Échecs 94</span>
+    <a class="brand" href="{{ site.baseurl }}/" aria-label="Ivry Échecs 94 – Accueil">
+      <img src="{{ site.baseurl }}/assets/logo-ivry-echecs.png" alt="">
     </a>
-    <nav class="nav" aria-label="Navigation principale">
+
+    <button class="burger" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Navigation principale">
       <a href="{{ site.baseurl }}/index.html">Accueil</a>
       <a href="{{ site.baseurl }}/about.html">Le club</a>
       <a href="{{ site.baseurl }}/agenda.html">Agenda</a>
       <a href="{{ site.baseurl }}/tarifs.html">Tarifs</a>
+      <!-- NOUVEAU -->
+      <a href="{{ site.baseurl }}/adhesion.html">Adhésion</a>
       <a href="{{ site.baseurl }}/contact.html">Contact</a>
     </nav>
-    <button class="burger" aria-controls="site-nav" aria-expanded="false" aria-label="Ouvrir le menu">
-      <span aria-hidden="true"></span>
-    </button>
   </div>
 </header>
-<a href="{{ site.baseurl }}/index.html" class="{% if page.url == '/index.html' %}active{% endif %}">Accueil</a>
-<a href="{{ site.baseurl }}/about.html" class="{% if page.url == '/about.html' %}active{% endif %}">Le club</a>
-<a href="{{ site.baseurl }}/agenda.html" class="{% if page.url == '/agenda.html' %}active{% endif %}">Agenda</a>
-<a href="{{ site.baseurl }}/tarifs.html" class="{% if page.url == '/tarifs.html' %}active{% endif %}">Tarifs</a>
-<a href="{{ site.baseurl }}/contact.html" class="{% if page.url == '/contact.html' %}active{% endif %}">Contact</a>
-
-
-

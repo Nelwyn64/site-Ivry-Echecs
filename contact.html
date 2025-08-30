@@ -1,28 +1,37 @@
 ---
 layout: default
-title: Ivry Échecs 94 – Tarifs
-meta_description: "Licences, cotisations et Pass’Sport."
-bg_image: bg-tarifs.jpg
+title: Ivry Échecs 94 — Contact
+meta_description: "Contactez le club Ivry Échecs 94"
+bg_image: bg-contact.jpg
 ---
 
-<section class="container">
+<section class="container small" style="padding:32px 0">
   <h1 class="section-title">Nous contacter</h1>
-  <p>Besoin d’informations ? Vous pouvez nous écrire via le formulaire ou par mail.</p>
+  <p>Besoin d’informations ? Vous pouvez nous écrire via ce formulaire ou par mail.</p>
 
-  <form class="contact-form" action="mailto:ivry.echecs94@example.com" method="post" enctype="text/plain">
-    <label for="name">Nom :</label>
-    <input type="text" id="name" name="name" required>
+  <form class="contact" action="#" method="post" novalidate>
+    <label>
+      <span>Nom</span>
+      <input type="text" name="nom" autocomplete="name" required>
+    </label>
 
-    <label for="email">Email :</label>
-    <input type="email" id="email" name="email" required>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" autocomplete="email" required>
+    </label>
 
-    <label for="message">Message :</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+    <label>
+      <span>Message</span>
+      <textarea name="message" required></textarea>
+    </label>
 
-    <button type="submit">Envoyer</button>
+    <div class="actions">
+      <button class="btn" type="submit">Envoyer</button>
+    </div>
   </form>
 
-  <p><strong>Email :</strong> ivry.echecs94@example.com</p>
-  <p><strong>Lieu :</strong> Salle municipale (adresse à définir), Ivry-sur-Seine</p>
+  <p style="margin-top:12px">
+    <strong>Email :</strong> ivry.echecs94@example.com<br>
+    <strong>Lieu :</strong> Salle municipale (adresse à définir), Ivry-sur-Seine
+  </p>
 </section>
-
