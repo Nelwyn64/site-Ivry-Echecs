@@ -111,3 +111,41 @@ label{display:block;margin:12px 0 6px}
     padding:12px 16px; border-top:1px solid #eee; border-radius:0;
   }
 }
+
+/* Logo + nom du club dans le header */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* espace entre logo et texte */
+}
+
+.brand img {
+  width: 120px;   /* largeur fixe du logo */
+  height: auto;  /* conserve les proportions */
+}
+
+.brand span {
+  font-size: 1.4rem;  /* taille du texte "Ivry Échecs 94" */
+  font-weight: 700;   /* texte en gras */
+}
+
+/* Version mobile : logo plus petit */
+@media (max-width: 600px) {
+  .brand img {
+    width: 40px;
+  }
+  .brand span {
+    font-size: 1.1rem;
+  }
+}
+
+/* Version desktop large : logo plus grand */
+@media (min-width: 1024px) {
+  .brand img {
+    width: 80px;
+  }
+  .brand span {
+    font-size: 1.6rem;
+  }
+}
+
