@@ -1,137 +1,255 @@
-/* =========================
-   Thème Ivry Échecs 94
-   - Texte jaune pâle
-   - Boutons/menu gris transparents
-   - Fond plein écran + overlay
-   - Alignement container
-   ========================= */
+/* =========================================================
+   Ivry Échecs 94 — styles.css (version unifiée)
+   - Variables & reset
+   - Layout de page & containers
+   - Header sticky + menu "pill" (jaune pâle)
+   - Bouton burger (mobile)
+   - Skip-link (accessibilité)
+   - Héros + fond plein écran (avec overlay)
+   - Grilles / cartes / galerie
+   - Boutons / liens / footer
+   ========================================================= */
 
-/* Vars globales */
+/* ---------- Variables : couleurs & tokens ---------- */
 :root{
-  /* Couleurs */
-  --bg: #0e0f11;                 /* fond du site (sombre discret) */
-  --ink: #fff6a0;                /* TEXTE JAUNE PÂLE partout */
-  --muted: #b8b8b8;
-  --accent: #fd353c;
+  /* Couleurs club */
+  --anthracite: #30333b;    /* gris anthracite demandé */
+  --rouge:      #fd353c;    /* rouge vif club */
+  --gris-clair: #cccccc;    /* gris clair demandé */
 
-  /* “Pills” : menu + cartes Enfants/Adultes */
-  --pill-bg: rgba(48,51,59,.35);      /* gris transparent */
+  /* Thème */
+  --bg:    #14161a;         /* fond racine */
+  --ink:   #f5f6f7;         /* texte principal */
+  --muted: #9aa2ad;         /* texte secondaire */
+
+  /* Accent / actions */
+  --primary: #fee08a;       /* JAUNE PÂLE pour titres/menus actifs */
+  --accent:  var(--rouge);
+
+  /* Pills (boutons du menu) */
+  --pill-bg:     rgba(48,51,59,.30);
   --pill-border: rgba(48,51,59,.55);
-  --pill-shadow: 0 8px 24px rgba(0,0,0,.25);
+  --pill-shadow: 0 8px 26px rgba(0,0,0,.22);
 
-  /* Overlay contraste sur les photos de fond */
-  --overlay: linear-gradient(180deg, rgba(14,15,17,.60) 0%, rgba(14,15,17,.55) 40%, rgba(14,15,17,.70) 100%);
+  /* Cartes/sections */
+  --card-bg:     rgba(48,51,59,.30);   /* légèrement + clair que header */
+  --card-border: rgba(48,51,59,.55);
+  --card-shadow: 0 10px 28px rgba(0,0,0,.18);
 
-  /* Layout */
-  --maxw: 1120px;
-  --space: 24px;
+  /* Overlay au-dessus des images de fond (texte lisible) */
+  --overlay: rgba(20,22,26,.45);
+
+  /* Mesures */
+  --space: 20px;
+  --maxw: 1100px;
 }
 
-/* Reset/base */
-*{ box-sizing:border-box; }
+/* ---------- Reset minimal ---------- */
+*{ box-sizing: border-box; }
 html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
   background: var(--bg);
-  color: var(--ink);                  /* <<< texte jaune pâle */
-  font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-}
-a{ color: var(--ink); text-decoration:none; }
-a:hover{ text-decoration:underline; }
-.container{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space); }
-
-/* Fond plein écran (insertion du <div class="page-bg"> depuis default.html) */
-.has-bg .page-bg{
-  position: fixed; inset: 0; z-index:-2;
-  background-size: cover; background-position: center;
-  background-repeat: no-repeat; background-attachment: fixed;
-}
-/* Overlay pour la lisibilité du texte */
-.has-bg::before{
-  content:""; position: fixed; inset:0; z-index:-1; pointer-events:none;
-  background: var(--overlay);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }
 
-/* Header */
-.site-header{ position:sticky; top:0; z-index:50; background:#14161a; border-bottom:1px solid rgba(255,255,255,.05); }
-.topbar{ display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px; }
+/* Focus visible accessible */
+:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:2px;
+  border-radius:8px;
+}
 
-/* Logo sans texte à côté */
+/* ---------- Helpers ---------- */
+.container{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--space);
+}
+
+.small{ max-width: 860px; }
+
+/* Typo de base */
+h1,h2,h3{ color: var(--primary); line-height:1.2; margin: 12px 0; }
+h1{ font-size: clamp(28px, 4vw, 42px); }
+h2{ font-size: clamp(22px, 2.6vw, 28px); }
+h3{ font-size: clamp(18px, 2vw, 22px); }
+
+p{ margin: 0 0 12px; color: var(--ink); }
+a{ color: var(--accent); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* =========================================================
+   HEADER STICKY + NAV
+   ========================================================= */
+
+/* Skip link : masqué sauf focus */
+.skip{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip:focus{
+  position:fixed; left:16px; top:16px; width:auto; height:auto;
+  padding:10px 14px; z-index:1000;
+  background:#14161a; color:var(--ink);
+  border:1px solid rgba(255,255,255,.3); border-radius:10px;
+}
+
+/* Barre sticky, plus opaque que les cartes */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(20,22,26,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px; gap:16px;
+}
+
+/* Logo */
 .brand{ display:inline-flex; align-items:center; gap:12px; }
 .brand img{ width:44px; height:auto; display:block; }
 @media (min-width:1024px){ .brand img{ width:48px; } }
 
-/* NAV : boutons/pills gris transparents + texte jaune pâle */
-.nav{ display:flex; gap:16px; align-items:center; }
+/* Nav : boutons "pill" homogènes, texte jaune pâle */
+.nav{ display:flex; align-items:center; gap:14px; }
 .nav a{
   display:inline-flex; align-items:center; justify-content:center;
-  padding:8px 14px; border-radius:999px;
-  background: var(--pill-bg);
+  height:40px;                      /* même hauteur */
+  min-width: 96px;                  /* largeur mini homogène */
+  padding:0 16px;
+  border-radius:999px;
+  background: var(--pill-bg);       /* gris transparent */
   border: 1px solid var(--pill-border);
-  color: var(--ink);
-  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  color: var(--primary);            /* JAUNE PÂLE pour le menu */
+  box-shadow: var(--pill-shadow);
+  text-align:center; white-space:nowrap;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
 }
-.nav a:hover{ transform: translateY(-1px); background: rgba(48,51,59,.45); }
-.nav a[aria-current="page"]{ outline: 2px solid rgba(255,224,138,.55); outline-offset: 2px; }
+.nav a:hover{
+  transform: translateY(-1px);
+  background: rgba(48,51,59,.45);
+}
+.nav a[aria-current="page"]{
+  outline:2px solid rgba(255,224,138,.55);
+  outline-offset:2px;
+}
 
 /* Burger (mobile) */
-.burger{ display:none; margin-left:auto; width:40px; height:40px; border:0; background:transparent; border-radius:10px; align-items:center; justify-content:center; }
+.burger{
+  display:none; margin-left:auto;
+  width:40px; height:40px; border:0; background:transparent; border-radius:10px;
+  align-items:center; justify-content:center;
+}
 .burger span, .burger span::before, .burger span::after{
-  content:""; display:block; width:22px; height:2px; background: var(--ink); position:relative;
+  content:""; display:block; width:22px; height:2px; background:var(--ink); position:relative;
 }
 .burger span::before{ position:absolute; left:0; top:-7px; }
 .burger span::after { position:absolute; left:0; top:7px; }
+
 @media (max-width: 719px){
   .burger{ display:inline-flex; }
   .nav{ display:none; width:100%; }
-  .nav.open{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding:10px 0; }
+  .nav.open{
+    display:flex; flex-direction:column; align-items:flex-start;
+    gap:10px; padding:10px 0;
+  }
 }
 
-/* Hero + titres */
-.hero{ padding: 40px 0 8px; }
-@media (min-width:1024px){ .hero{ padding: 64px 0 16px; } }
-h1{ margin:0 0 12px; font-size: clamp(28px, 4vw, 44px); }
-.section-title{ margin: 24px 0 8px; font-size: 1.6rem; }
+/* =========================================================
+   HÉROS + FOND PLEIN ÉCRAN
+   (le HTML crée <div class="page-bg"> en arrière-plan)
+   ========================================================= */
 
-/* Grilles & cartes (les cartes reprennent l’apparence des boutons de menu) */
-.grid{ display:grid; gap:24px; }
+.page-bg{
+  position: fixed;
+  inset: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
+}
+.page-bg::after{
+  content:""; position:absolute; inset:0;
+  background: var(--overlay);       /* voile pour contraste */
+}
+
+/* Section héros sur la home */
+.hero{
+  padding: clamp(28px, 6vw, 64px) 0 clamp(8px, 2vw, 16px);
+}
+.hero .btn{ margin-top:16px; }
+
+/* =========================================================
+   CARTES / GRILLES / GALERIE
+   ========================================================= */
+
+.grid{ display:grid; gap:16px; }
 .grid.cols-2{ grid-template-columns: 1fr; }
-@media (min-width:960px){ .grid.cols-2{ grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px){
+  .grid.cols-2{ grid-template-columns: 1fr 1fr; }
+}
 
+/* Cartes (index) : un peu plus translucides que le header */
 .card{
-  background: var(--pill-bg);        /* même style que la nav */
-  border: 1px solid var(--pill-border);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius:16px;
+  padding:20px 24px;
+  box-shadow: var(--card-shadow);
   color: var(--ink);
-  border-radius: 16px;
-  padding: 20px 24px;
-  box-shadow: var(--pill-shadow);
 }
 
-/* Galerie (page Le club) */
-.gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 16px; }
+/* Galerie responsive (about) */
+.gallery{
+  display:grid; gap:16px; margin-top:16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
 .gallery img{
-  width:100%; height:auto; display:block; border-radius:16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  transition: transform .2s ease;
+  width:100%; height:auto; display:block; border-radius:12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+  transition: transform .25s ease, filter .25s ease;
 }
-.gallery img:hover{ transform: scale(1.02); }
-
-/* Formulaire (contact) */
-input[type="text"], input[type="email"], textarea{
-  width:100%; padding:12px 14px; border:1px solid #2f3237; border-radius:10px; background:#1b1e22; color: var(--ink);
+.gallery img:hover{
+  transform: scale(1.03);
+  filter: brightness(1.04) contrast(1.02);
 }
-textarea{ min-height: 140px; }
-input:focus, textarea:focus{ outline:none; border-color:#ffd84d; box-shadow:0 0 0 3px rgba(255,216,77,.18); }
 
-/* Bouton générique */
+/* =========================================================
+   BOUTONS / LIENS
+   ========================================================= */
+
 .btn{
-  display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid var(--pill-border);
-  background: var(--pill-bg); color: var(--ink);
-  box-shadow: var(--pill-shadow);
-  transition: transform .15s ease, background .15s ease;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 12px 18px; border-radius:999px; border:1px solid transparent;
+  background: var(--accent); color:#fff; font-weight:600;
+  box-shadow: 0 8px 26px rgba(253,53,60,.35);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
-.btn:hover{ transform: translateY(-1px); background: rgba(48,51,59,.45); }
+.btn:hover{ transform: translateY(-1px); opacity:.95; }
 
-/* Footer */
-.site-footer{ border-top:1px solid rgba(255,255,255,.08); background: transparent; }
-.container.small{ padding: 14px var(--space); }
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer{
+  margin-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 16px 0;
+  background: rgba(20,22,26,.75);
+}
+.site-footer a{ color: var(--accent); }
+
+/* =========================================================
+   UTILITAIRES
+   ========================================================= */
+
+.section-title{ margin: 10px 0 12px; }
+
+/* Force la largeur des éléments du menu pour uniformiser l’aspect
+   même quand les mots sont courts/longs */
+.nav a{ min-width: 96px; }
+
+/* Petites améliorations de lisibilité sur fond photo */
+.shadow-soft{ text-shadow: 0 2px 16px rgba(0,0,0,.5); }
