@@ -103,23 +103,20 @@ section{ padding: clamp(28px, 5vw, 56px) 0 }
   padding: clamp(32px, 8vw, 96px) 0 clamp(16px, 6vw, 48px);
 }
 /* ---------- Hero + full-page background ---------- */
-.page-bg{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size: cover;
-  transform: translateZ(0);
+/* === Overlay noir semi-transparent sur TOUTES les pages === */
+.page-bg {
+  position: relative;   /* permet au ::after de se placer correctement */
+  z-index: 0;
 }
 
-/* Overlay noir semi-transparent sur TOUTES les pages */
-.page-bg::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.60);   /* 45% noir (tu peux ajuster entre .3 et .6) */
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;                       /* couvre tout le parent */
+  background: rgba(0,0,0,0.8);    /* 80% noir = assombri fort */
+  z-index: -1;                    /* reste derrière le contenu */
 }
+
 
 .hero h1{
   font-size: clamp(32px, 4.8vw, 56px);
