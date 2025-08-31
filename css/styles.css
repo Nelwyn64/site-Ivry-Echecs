@@ -104,18 +104,32 @@ section{ padding: clamp(28px, 5vw, 56px) 0 }
 }
 /* ---------- Hero + full-page background ---------- */
 /* === Overlay noir semi-transparent sur TOUTES les pages === */
-.page-bg {
-  position: relative;   /* permet au ::after de se placer correctement */
-  z-index: 0;
+/* Zone de fond plein écran */
+.page-bg{
+  position:relative;
+  inset:0;
+  min-height: 40vh;          /* hauteur mini de la zone de fond */
+  background-position:center;
+  background-size:cover;
+  background-attachment: fixed;
+  z-index: 0;                /* derrière le contenu */
 }
 
-.page-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;                       /* couvre tout le parent */
-  background: rgba(0,0,0,0.8);    /* 80% noir = assombri fort */
-  z-index: -1;                    /* reste derrière le contenu */
+/* Overlay noir — augmente l'opacité pour assombrir davantage */
+.page-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.60); /* 55% de noir. Monte à .60/.65 pour encore plus sombre */
+  pointer-events:none;
 }
+
+/* Le contenu doit passer au-dessus du fond */
+main, header, footer{
+  position:relative;
+  z-index: 1;
+}
+
 
 
 .hero h1{
