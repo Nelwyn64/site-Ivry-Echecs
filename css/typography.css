@@ -9,7 +9,7 @@
   --line-base: 1.65;
 
   /* Facteur d’échelle des titres (type scale) */
-  --scale: 1.18;              /* 1.2 à 1.33 : plus grand => titres plus imposants */
+  --scale: 0.8;              /* 1.2 à 1.33 : plus grand => titres plus imposants */
 
   /* Famille & graisses */
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
