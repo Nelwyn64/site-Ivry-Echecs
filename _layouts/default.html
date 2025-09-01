@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.meta_description | default: site.description }}">
 
-  <!-- TYPOGRAPHIE globale -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/typography.css?v={{ site.time | date: '%s' }}">
-
-  <!-- STYLES généraux -->
+  <!-- Styles généraux -->
   <link rel="stylesheet" href="{{ site.baseurl }}/css/styles.css?v={{ site.time | date: '%s' }}">
+
+  <!-- Typographie (chargée APRÈS pour écraser styles.css) -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/typography.css?v={{ site.time | date: '%s' }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
 </head>
 <body class="{% if page.bg_image %}has-bg{% endif %}">
+
   {% if page.bg_image %}
-  <div class="page-bg" style="background-image:url('{{ site.baseurl }}/assets/{{ page.bg_image }}')"></div>
+    <div class="page-bg" style="background-image:url('{{ site.baseurl }}/assets/{{ page.bg_image }}')"></div>
   {% endif %}
 
   {% include header.html %}
