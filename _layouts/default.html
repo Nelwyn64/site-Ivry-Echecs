@@ -29,5 +29,29 @@
   </main>
 
   {% include footer.html %}
+  <script>
+  (function(){
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    if(!btn || !nav) return;
+
+    function toggleNav(){
+      const open = nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    }
+
+    btn.addEventListener('click', toggleNav);
+
+    nav.addEventListener('click', (e)=>{
+      const a = e.target.closest('a');
+      if(a && nav.classList.contains('is-open')) toggleNav();
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && nav.classList.contains('is-open')) toggleNav();
+    });
+  })();
+</script>
 </body>
 </html>
