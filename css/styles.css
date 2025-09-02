@@ -124,6 +124,18 @@ a:hover{ text-decoration: underline; }
 
 /* --------- Hero & sections -------------------------------- */
 .hero{ padding: clamp(28px, 5vw, 48px) 0 6px; }
+/* Correction bug mobile : image de fond */
+.hero{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 900px){
+  .hero{
+    background-attachment: scroll !important; /* évite le zoom/dézoom en scroll */
+  }
+}
 
 /* (Les tailles/line-height/couleurs de h1…h6 sont gérées dans typography.css) */
 
