@@ -4,22 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{{ page.title }}</title>
+  <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.meta_description | default: site.description }}">
 
   <!-- Styles généraux -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/styles.css?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ '/css/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
   <!-- Typographie (chargée APRÈS pour écraser styles.css) -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/typography.css?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 </head>
 <body class="{% if page.bg_image %}has-bg{% endif %}">
 
   {% if page.bg_image %}
-    <div class="page-bg" style="background-image:url('{{ site.baseurl }}/assets/{{ page.bg_image }}')"></div>
+    <div class="page-bg"
+         style="background-image:url('{{ ('/assets/' | append: page.bg_image) | relative_url }}')"></div>
   {% endif %}
 
   {% include header.html %}
@@ -29,6 +30,7 @@
   </main>
 
   {% include footer.html %}
+
   <script>
   (function(){
     const btn = document.querySelector('.nav-toggle');
@@ -52,6 +54,6 @@
       if(e.key === 'Escape' && nav.classList.contains('is-open')) toggleNav();
     });
   })();
-</script>
+  </script>
 </body>
 </html>
