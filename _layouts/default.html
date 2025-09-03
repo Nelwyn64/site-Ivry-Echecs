@@ -1,55 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.meta_description | default: site.description }}">
+  <meta name="description" content="{{ page.meta_description | default: site.title }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Feuilles de style -->
-  <link rel="stylesheet" href="{{ '/css/styles.css'     | relative_url }}?v={{ site.time | date: '%s' }}">
-  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ 'css/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ 'css/styles.css' | relative_url }}">
 </head>
-<body class="{% if page.bg_image %}has-bg{% endif %}">
+<body class="{{ page.layout }}">
 
-  {% if page.bg_image %}
-    <div class="page-bg"
-         style="background-image:url('{{ ('/assets/' | append: page.bg_image) | relative_url }}')"></div>
-  {% endif %}
-
+  <!-- Header commun -->
   {% include header.html %}
 
-  <main id="contenu">
+  <!-- Contenu de la page -->
+  <main>
     {{ content }}
   </main>
 
+  <!-- Footer commun -->
   {% include footer.html %}
 
-  <script>
-  (function(){
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('site-nav');
-    if(!btn || !nav) return;
-
-    function toggleNav(){
-      const open = nav.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    }
-
-    btn.addEventListener('click', toggleNav);
-    nav.addEventListener('click', (e)=>{
-      const a = e.target.closest('a');
-      if(a && nav.classList.contains('is-open')) toggleNav();
-    });
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape' && nav.classList.contains('is-open')) toggleNav();
-    });
-  })();
-  </script>
+  <!-- Scripts -->
+  <script src="{{ 'js/main.js' | relative_url }}"></script>
 </body>
 </html>

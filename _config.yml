@@ -1,11 +1,6 @@
 title: "Ivry Échecs 94"
-description: "Club d’échecs à Ivry-sur-Seine : initiation, progression, convivialité et compétitions."
-
-url: ""        # laisse vide
-baseurl: ""    # laisse vide
+url: ""
+baseurl: ""
 
 markdown: kramdown
-
-exclude:
-  - node_modules
-  - README.md
+permalink: pretty
