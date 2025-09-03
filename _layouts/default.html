@@ -6,24 +6,19 @@
   <meta name="description" content="{{ page.meta_description | default: site.title }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Feuilles de style -->
+  <!-- Feuilles de style (liens robustes pour Netlify/GitHub) -->
   <link rel="stylesheet" href="{{ 'css/typography.css' | relative_url }}">
   <link rel="stylesheet" href="{{ 'css/styles.css' | relative_url }}">
 </head>
 <body class="{{ page.layout }}">
-
-  <!-- Header commun -->
   {% include header.html %}
 
-  <!-- Contenu de la page -->
   <main>
     {{ content }}
   </main>
 
-  <!-- Footer commun -->
   {% include footer.html %}
 
-  <!-- Scripts -->
   <script src="{{ 'js/main.js' | relative_url }}"></script>
 </body>
 </html>
