@@ -1,8 +1,9 @@
 title: "Ivry Échecs 94"
 description: "Club d’échecs à Ivry-sur-Seine : initiation, progression, convivialité et compétitions."
 
-url: "https://cool-klepon-f668fd.netlify.app"
-baseurl: ""   # très important de le laisser vide
+url: ""        # tu peux aussi commenter cette ligne
+baseurl: ""    # IMPORTANT : baseurl doit être vide
+
 
 markdown: kramdown
 
