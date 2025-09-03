@@ -7,10 +7,8 @@
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.meta_description | default: site.description }}">
 
-  <!-- Styles généraux -->
-  <link rel="stylesheet" href="{{ '/css/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-
-  <!-- Typographie (chargée APRÈS pour écraser styles.css) -->
+  <!-- Feuilles de style -->
+  <link rel="stylesheet" href="{{ '/css/styles.css'     | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
   <!-- Favicon -->
@@ -44,12 +42,10 @@
     }
 
     btn.addEventListener('click', toggleNav);
-
     nav.addEventListener('click', (e)=>{
       const a = e.target.closest('a');
       if(a && nav.classList.contains('is-open')) toggleNav();
     });
-
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape' && nav.classList.contains('is-open')) toggleNav();
     });

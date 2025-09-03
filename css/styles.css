@@ -152,6 +152,12 @@ section{ padding: 18px 0 28px; }
 /* --------- Grilles & cartes (verre) ----------------------- */
 .grid{ display:grid; gap: 28px; }
 .cols-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* ✅ Ajout : Grille 3 colonnes */
+.cols-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1100px){ .cols-3{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px){ .cols-3{ grid-template-columns: 1fr; } }
+
 @media (max-width: 860px){ .cols-2{ grid-template-columns: 1fr; } }
 
 .card{
@@ -229,6 +235,7 @@ section{ padding: 18px 0 28px; }
 
 /* Espaces pour respirer sous le header */
 main{ position: relative; z-index: 0; padding-bottom: 32px; }
+
 /* ====== Nav responsive (hamburger) ====== */
 /* Base layout du topbar */
 .site-header .topbar{
@@ -278,6 +285,7 @@ main{ position: relative; z-index: 0; padding-bottom: 32px; }
   }
   .nav a:last-child{ border-bottom:none; }
 }
+
 /* Correction mobile : éviter zoom/dézoom de .page-bg */
 .page-bg {
   position: fixed;       /* reste derrière le contenu */

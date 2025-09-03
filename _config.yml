@@ -1,9 +1,8 @@
 title: "Ivry Échecs 94"
 description: "Club d’échecs à Ivry-sur-Seine : initiation, progression, convivialité et compétitions."
 
-url: ""        # tu peux aussi commenter cette ligne
-baseurl: ""    # IMPORTANT : baseurl doit être vide
-
+url: ""        # laisse vide
+baseurl: ""    # laisse vide
 
 markdown: kramdown
 
